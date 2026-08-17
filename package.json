@@ -17,12 +17,12 @@
   "author": "dsh-niu-lai contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dsh-niu-lai/dsh-niu-lai.git"
+    "url": "git+https://github.com/jxwb125646/dsh-niu-lai.git"
   },
   "bugs": {
-    "url": "https://github.com/dsh-niu-lai/dsh-niu-lai/issues"
+    "url": "https://github.com/jxwb125646/dsh-niu-lai/issues"
   },
-  "homepage": "https://github.com/dsh-niu-lai/dsh-niu-lai#readme",
+  "homepage": "https://github.com/jxwb125646/dsh-niu-lai#readme",
   "type": "module",
   "main": "./lib/host.js",
   "exports": {
