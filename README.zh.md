@@ -12,6 +12,10 @@
 ## 安装
 
 ```sh
+# GitHub 源（现在就能装）
+dsh plugin --profile web add github:jxwb125646/dsh-niu-lai
+
+# 发布到 npm 后可以用短命令
 dsh plugin --profile web add dsh-niu-lai
 ```
 

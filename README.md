@@ -12,6 +12,10 @@ All in-browser (Web Audio). No API keys, no external services, the clips ship em
 ## Install
 
 ```sh
+# GitHub source (works today)
+dsh plugin --profile web add github:jxwb125646/dsh-niu-lai
+
+# npm (once published)
 dsh plugin --profile web add dsh-niu-lai
 ```
 
