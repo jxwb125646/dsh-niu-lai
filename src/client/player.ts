@@ -3,6 +3,9 @@
  * first user gesture (pointerdown/keydown) so autoplay policies never block
  * a later trigger. Decoded buffers are cached per source URL; failures are
  * warnings — playback is decorative and must never break the app.
+ *
+ * One clip at a time: starting a new clip stops the one still playing, so a
+ * fast "牛来" cuts off a lingering "妈妈" instead of overlapping it.
  */
 import { clampVolume } from './settings.ts'
 
@@ -25,6 +28,8 @@ export class SoundPlayer {
   private context: AudioContext | null = null
   private readonly buffers = new Map<string, AudioBuffer>()
   private readonly inflight = new Map<string, Promise<AudioBuffer | null>>()
+  /** Sources currently audible; the next play stops them first. */
+  private readonly active = new Set<AudioBufferSourceNode>()
 
   constructor(
     private readonly volumeOf: () => number,
@@ -57,7 +62,8 @@ export class SoundPlayer {
 
   /**
    * Play one clip at the current volume. Never throws: playback is
-   * decorative, a failed sound must not break the caller.
+   * decorative, a failed sound must not break the caller. Interrupts any
+   * clip still playing — the newest sound wins.
    * @param src - data:, http(s):, or blob: URL of the clip.
    */
   async play(src: string): Promise<void> {
@@ -69,15 +75,36 @@ export class SoundPlayer {
       if (context.state !== 'running') return
       const buffer = await this.loadBuffer(src)
       if (buffer === null) return
+      // A failed load must not silence the current clip, so interrupt only
+      // once the new clip is ready to start.
+      this.interrupt()
       const source = context.createBufferSource()
       const gain = context.createGain()
       gain.gain.value = clampVolume(this.volumeOf(), 1)
       source.buffer = buffer
       source.connect(gain)
       gain.connect(context.destination)
+      this.active.add(source)
+      source.onended = () => {
+        this.active.delete(source)
+      }
       source.start(0)
     } catch (error) {
       console.warn('[ui-niu-lai] playback failed', error)
+    }
+  }
+
+  /** Stop every currently playing source so the next clip starts clean. */
+  private interrupt(): void {
+    for (const source of this.active) {
+      this.active.delete(source)
+      try {
+        source.onended = null
+        source.stop(0)
+        source.disconnect()
+      } catch {
+        // Already stopped/disconnected — nothing left to do.
+      }
     }
   }
 

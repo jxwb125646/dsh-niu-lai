@@ -65,11 +65,15 @@
   },
   "scripts": {
     "build": "tsdown",
-    "embed-audio": "node scripts/embed-audio.mjs"
+    "embed-audio": "node scripts/embed-audio.mjs",
+    "test": "vitest run"
   },
   "devDependencies": {
+    "@testing-library/react": "^16.1.0",
+    "jsdom": "^26.0.0",
     "lightningcss": "^1.29.0",
-    "tsdown": "^0.22.0"
+    "tsdown": "^0.22.0",
+    "vitest": "^4.1.0"
   },
   "files": [
     "cordis.patch.yml",

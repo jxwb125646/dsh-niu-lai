@@ -35,7 +35,7 @@ The browser half watches every session's conversation snapshot:
 - a new `user`/`steering` message node → plays the *Mama* clip
 - a turn ends (finalized assistant message or terminal turn error) → plays the *Niu Lai* clip
 
-Anti-spam guards: session open/history pagination/reconnect never trigger; each turn sounds once; nothing plays while a session is still loading.
+Anti-spam guards: session open/history pagination/reconnect never trigger; each turn sounds once; nothing plays while a session is still loading. One clip at a time — a new sound interrupts the one still playing, so a fast reply's “牛来” cuts off a lingering “妈妈”.
 
 Two notes: browsers require one click/keypress before audio unlocks (sending a message counts); every open page tab plays its own copy.
 
