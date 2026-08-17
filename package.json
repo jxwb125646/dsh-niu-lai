@@ -1,0 +1,85 @@
+{
+  "name": "dsh-niu-lai",
+  "version": "1.0.0",
+  "description": "dsh-niu-lai · 《牛来》 meme sound board for DeepSeek Harness Web — plays the movie's “妈妈” when you send a message and “牛来” when a task completes",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "plugin",
+    "sound",
+    "notification",
+    "meme",
+    "niu-lai",
+    "音效"
+  ],
+  "license": "MIT",
+  "author": "dsh-niu-lai contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsh-niu-lai/dsh-niu-lai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dsh-niu-lai/dsh-niu-lai/issues"
+  },
+  "homepage": "https://github.com/dsh-niu-lai/dsh-niu-lai#readme",
+  "type": "module",
+  "main": "./lib/host.js",
+  "exports": {
+    ".": {
+      "default": "./lib/host.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-client-runtime": "*",
+    "@deepseek-ai/dsh-client-locale": "*",
+    "@deepseek-ai/dsh-client-ui-settings": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-client-runtime": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-locale": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-settings": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "embed-audio": "node scripts/embed-audio.mjs"
+  },
+  "devDependencies": {
+    "lightningcss": "^1.29.0",
+    "tsdown": "^0.22.0"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "lib",
+    "src",
+    "assets",
+    "scripts",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
+    "NOTICE.md"
+  ]
+}

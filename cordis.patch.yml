@@ -1,0 +1,7 @@
+# dsh-niu-lai bundle patch layer.
+# Shipped with the package; `dsh plugin add dsh-niu-lai` applies this layer
+# to the profile automatically at the next dsh web boot.
+
+- insert:
+    - id: dsh-niu-lai
+      name: dsh-niu-lai

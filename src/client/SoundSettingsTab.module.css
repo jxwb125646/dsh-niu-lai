@@ -1,0 +1,109 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 760px;
+  color: var(--dsw-alias-label-primary);
+}
+
+.title,
+.description {
+  margin: 0;
+}
+
+.description {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.master {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.volume {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.volumeValue {
+  min-width: 3ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid var(--dsw-alias-border-line, rgba(0, 0, 0, 0.08));
+}
+
+.rowHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.rowLabel {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.rowName {
+  font-size: 12px;
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.rowControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fileButton,
+.button {
+  font-size: 13px;
+  line-height: 20px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--dsw-alias-border-line, rgba(0, 0, 0, 0.15));
+  background: transparent;
+  color: var(--dsw-alias-label-primary);
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled),
+.fileButton:hover {
+  background: var(--dsw-alias-interactive-bg-hover, rgba(0, 0, 0, 0.05));
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
